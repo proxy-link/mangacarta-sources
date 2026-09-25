@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "name": "MangaCarta Sources",
+  "bundles": [
+    {
+      "id": "mangadex-api",
+      "version": 1,
+      "script": "https://raw.githubusercontent.com/proxy-link/mangacarta-sources/main/mangadex/engine.js",
+      "scriptSHA256": "00841cf59575c3e5ea3045879e4d38e113c1fbf0008aaef3e4c981f929ccef49",
+      "sources": [
+        {
+          "localId": "mangadex",
+          "name": "MangaDex",
+          "engine": "mangadexApi",
+          "adult": "mixed",
+          "externalIds": ["mal"],
+          "capabilities": {
+            "search": true,
+            "popular": true,
+            "newTitles": true,
+            "latestUpdates": true,
+            "tagBrowse": true,
+            "detail": true,
+            "chapters": true,
+            "pages": true,
+            "webURL": true,
+            "listing": true
+          },
+          "languages": { "mode": "fixed", "values": ["en"] },
+          "network": {
+            "httpOrigins": ["https://api.mangadex.org"],
+            "browserOrigins": ["https://mangadex.org"],
+            "assetOrigins": ["https://uploads.mangadex.org", "https://*.mangadex.network"]
+          },
+          "presentation": {
+            "feeds": {
+              "popular": { "eyebrow": "Top rated" },
+              "latestUpdates": { "eyebrow": "New chapters" },
+              "newTitles": { "eyebrow": "Just added" }
+            }
+          },
+          "hostAPI": { "minimum": "1.2", "maximumExclusive": "2.0" },
+          "configuration": {
+            "apiBaseURL": "https://api.mangadex.org",
+            "coverBaseURL": "https://uploads.mangadex.org",
+            "siteBaseURL": "https://mangadex.org"
+          }
+        }
+      ]
+    }
+  ]
+}
