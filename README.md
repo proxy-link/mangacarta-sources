@@ -27,7 +27,7 @@ nothing changes on your device until you accept it.
 
 ## Status
 
-Sources are being prepared and will be published here soon.
+The index offers MangaDex and WeebCentral. Site layouts and access requirements can change; report a source that stops working.
 
 ## Reporting a problem
 

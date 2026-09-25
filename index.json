@@ -47,6 +47,178 @@
           }
         }
       ]
+    },
+    {
+      "id": "html-selector",
+      "version": 2,
+      "script": "https://raw.githubusercontent.com/proxy-link/mangacarta-sources/main/weebcentral/engine.js",
+      "scriptSHA256": "88ad0627fe079d8da1768f654883c199d433e43171d965aff0eb0cdc40363974",
+      "sources": [
+        {
+          "localId": "weebcentral",
+          "name": "WeebCentral",
+          "engine": "htmlSelectorTheme",
+          "adult": "none",
+          "capabilities": {
+            "search": true,
+            "popular": true,
+            "newTitles": true,
+            "latestUpdates": true,
+            "detail": true,
+            "chapters": true,
+            "pages": true,
+            "webURL": true
+          },
+          "languages": {
+            "mode": "fixed",
+            "values": [
+              "en"
+            ]
+          },
+          "network": {
+            "httpOrigins": [],
+            "browserOrigins": [
+              "https://weebcentral.com"
+            ],
+            "assetOrigins": [
+              "https://temp.compsci88.com",
+              "https://scans.lastation.us"
+            ]
+          },
+          "presentation": {
+            "feeds": {
+              "popular": {
+                "eyebrow": "By popularity"
+              },
+              "latestUpdates": {
+                "eyebrow": "New chapters"
+              },
+              "newTitles": {
+                "eyebrow": "Just added"
+              }
+            }
+          },
+          "hostAPI": {
+            "minimum": "1.0",
+            "maximumExclusive": "2.0"
+          },
+          "configuration": {
+            "baseURL": "https://weebcentral.com",
+            "operations": {
+              "search": {
+                "path": "/search/data",
+                "query": {
+                  "sort": "Best Match",
+                  "display_mode": "Full Display",
+                  "limit": "{limit}",
+                  "offset": "{offset}",
+                  "text": "{query}"
+                }
+              },
+              "popular": {
+                "path": "/search/data",
+                "query": {
+                  "sort": "Popularity",
+                  "display_mode": "Full Display",
+                  "limit": "{limit}",
+                  "offset": "{offset}"
+                }
+              },
+              "newTitles": {
+                "path": "/search/data",
+                "query": {
+                  "sort": "Recently Added",
+                  "display_mode": "Full Display",
+                  "limit": "{limit}",
+                  "offset": "{offset}"
+                }
+              },
+              "latestUpdates": {
+                "path": "/latest-updates/{page}"
+              },
+              "detail": {
+                "path": "/series/{listingId}"
+              },
+              "chapters": {
+                "path": "/series/{listingId}/full-chapter-list"
+              },
+              "pages": {
+                "path": "/chapters/{chapterId}/images",
+                "query": {
+                  "reading_style": "long_strip"
+                }
+              },
+              "webURL": {
+                "path": "/series/{listingId}"
+              }
+            },
+            "pagination": {
+              "listings": "offset",
+              "latestUpdates": "page",
+              "firstPage": 1,
+              "clientLimit": [
+                "latestUpdates"
+              ]
+            },
+            "selectors": {
+              "listing": {
+                "item": "article.flex.gap-4",
+                "link": "a[href*=\"/series/\"]",
+                "title": [
+                  "a.link.link-hover"
+                ],
+                "image": "img",
+                "idSegment": "series"
+              },
+              "update": {
+                "item": "article",
+                "listingLink": [
+                  "a.aspect-square",
+                  "a[href*=\"/series/\"]"
+                ],
+                "chapterLink": [
+                  "a.min-w-0",
+                  "a[href*=\"/chapters/\"]"
+                ],
+                "title": [
+                  "div.font-semibold"
+                ],
+                "image": "a img",
+                "listingIdSegment": "series",
+                "chapterIdSegment": "chapters"
+              },
+              "detail": {
+                "description": ".whitespace-pre-wrap",
+                "authorLabel": "Author",
+                "authorLink": "span a",
+                "tagLabel": "Tag",
+                "tagLink": "a",
+                "adultLabel": "Adult Content"
+              },
+              "chapter": {
+                "item": "a.flex.items-center",
+                "title": [
+                  "span.grow.flex.gap-2 span",
+                  "span.grow span",
+                  "span"
+                ],
+                "date": "time[datetime]",
+                "idSegment": "chapters"
+              },
+              "page": {
+                "image": "section.cursor-pointer img"
+              }
+            },
+            "chapterNumber": {
+              "pattern": "\\d+(\\.\\d+)?"
+            },
+            "contentRating": {
+              "adult": "erotica",
+              "default": "safe"
+            }
+          }
+        }
+      ]
     }
   ]
 }
